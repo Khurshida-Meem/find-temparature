@@ -1,7 +1,9 @@
+document.getElementById('spinner').style.display = 'none';
 const loadData = async () => {
     const inputField = document.getElementById('input-field');
     const inputText = inputField.value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${'2fe540d0a1e5265a2feb17dfad609b80'}`;
+    document.getElementById('spinner').style.display = 'block';
     const res = await fetch(url);
     const data = await res.json();
     showData(data);
@@ -10,6 +12,7 @@ const loadData = async () => {
 
 const showData = city => {
     try {
+        document.getElementById('spinner').style.display = 'block';
         const src = loadImg(city.weather[0].main)
         const divContainer = document.getElementById('div-container');
         divContainer.textContent = '';
@@ -22,16 +25,20 @@ const showData = city => {
         <h1 class="lead">${city.weather[0].description}</h1>
         `
         divContainer.appendChild(div);
+        document.getElementById('spinner').style.display = 'none';
     }
     catch {
         const divContainer = document.getElementById('div-container');
         divContainer.textContent = '';
         const div = document.createElement('div');
         div.classList.add('container', 'alert', 'alert-danger', 'text-center');
+        
         div.innerHTML = `
         <p>City not found, Please try a valid city that exist!</p>
         `
+        document.getElementById('spinner').style.display = 'block';
         divContainer.appendChild(div);
+        document.getElementById('spinner').style.display = 'none';
     }
 
 }
