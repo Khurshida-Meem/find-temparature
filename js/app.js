@@ -1,7 +1,7 @@
 const loadData = async () => {
     const inputField = document.getElementById('input-field');
     const inputText = inputField.value;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${'2fe540d0a1e5265a2feb17dfad609b80'}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${'2fe540d0a1e5265a2feb17dfad609b80'}`;
     const res = await fetch(url);
     const data = await res.json();
     showData(data);
