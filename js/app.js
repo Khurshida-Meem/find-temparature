@@ -13,7 +13,8 @@ const loadData = async () => {
 const showData = city => {
     try {
         document.getElementById('spinner').style.display = 'block';
-        const src = loadImg(city.weather[0].main)
+        // const src = loadImg(city.weather[0].main)
+        const src = `https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`;
         const divContainer = document.getElementById('div-container');
         divContainer.textContent = '';
         const div = document.createElement('div');
@@ -43,18 +44,18 @@ const showData = city => {
 
 }
 
-const loadImg = weather => {
-    if (weather == 'Rain') {
-        return 'https://openweathermap.org/img/wn/09d@2x.png';
-    }
-    else if (weather == 'Haze') {
-        return 'https://openweathermap.org/img/wn/02d@2x.png';
-    }
-    else if (weather == 'Clouds') {
-        return 'https://openweathermap.org/img/wn/04d@2x.png';
-    }
-    else if (weather == 'Clear') {
-        return 'https://openweathermap.org/img/wn/01d@2x.png';
-    }
-}
+// const loadImg = weather => {
+//     if (weather == 'Rain') {
+//         return 'https://openweathermap.org/img/wn/09d@2x.png';
+//     }
+//     else if (weather == 'Haze') {
+//         return 'https://openweathermap.org/img/wn/02d@2x.png';
+//     }
+//     else if (weather == 'Clouds') {
+//         return 'https://openweathermap.org/img/wn/04d@2x.png';
+//     }
+//     else if (weather == 'Clear') {
+//         return 'https://openweathermap.org/img/wn/01d@2x.png';
+//     }
+// }
 
